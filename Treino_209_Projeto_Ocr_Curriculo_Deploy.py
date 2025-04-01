@@ -8,7 +8,7 @@ from google.auth import default
 from google.auth.exceptions import DefaultCredentialsError
 
 # Configurar credenciais do Google Cloud
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"service_key"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = st.secrets["key"]["service_key"]
 
 try:
     credentials, project = default()
@@ -62,7 +62,7 @@ def generate(text):
     ]
     tools = [
         types.Tool(retrieval=types.Retrieval(vertex_ai_search=types.VertexAISearch(
-            datastore="datastore"
+            datastore=st.secrets["google_cloud"]["datastore"]
         )))
     ]
 
@@ -102,7 +102,7 @@ st.set_page_config(
 # --- Sidebar ---
 with st.sidebar:
     # Exibir imagem
-    image_url = "image_url"
+    image_url = st.secrets["google_drive"]["image_url"]
     try:
         response = requests.get(image_url)
         image = BytesIO(response.content)
@@ -112,7 +112,7 @@ with st.sidebar:
 
     # Nome e link para download do CV
     st.markdown("<h4 style='text-align: center; font-size: 24px;'><b>Marcos Bernardino</b></h4>", unsafe_allow_html=True)
-    cv_url = "cv_url"
+    cv_url = st.secrets["google_drive"]["cv_url"]
     st.markdown(f"<p style='text-align: center;'><a href='{cv_url}' download>Download CV</a></p>", unsafe_allow_html=True)
 
 # --- Inicializar histórico do chat ---
