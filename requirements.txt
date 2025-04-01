@@ -3,3 +3,4 @@ requests
 google-generativeai
 google-auth
 google-genai
+json
