@@ -3,12 +3,14 @@ import requests
 from io import BytesIO
 from google import genai
 from google.genai import types
-import os
 from google.auth import default
 from google.auth.exceptions import DefaultCredentialsError
+import json
+from google.oauth2 import service_account
 
-# Configurar credenciais do Google Cloud
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = st.secrets["key"]["service_key"]
+service_key_json = st.secrets["key"]["service_key"]
+service_key_dict = json.loads(service_key_json)
+credentials = service_account.Credentials.from_service_account_info(service_key_dict)
 
 try:
     credentials, project = default()
