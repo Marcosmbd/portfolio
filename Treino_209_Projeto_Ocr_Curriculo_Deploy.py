@@ -6,11 +6,22 @@ from google.genai import types
 from google.auth import default
 from google.auth.exceptions import DefaultCredentialsError
 import json
-from google.oauth2 import service_account
+import os
 
+# Recupera a chave de serviço do secrets.toml
 service_key_json = st.secrets["key"]["service_key"]
+
+# Converte o JSON para um dicionário
 service_key_dict = json.loads(service_key_json)
-credentials = service_account.Credentials.from_service_account_info(service_key_dict)
+
+# Salva a chave de serviço em um arquivo temporário
+service_key_path = "gcp_service_key.json"  # Caminho temporário no Streamlit Cloud
+
+with open(service_key_path, "w") as f:
+    json.dump(service_key_dict, f)
+
+# Configura a variável de ambiente para o Google Cloud usar o arquivo
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = service_key_path
 
 try:
     credentials, project = default()
