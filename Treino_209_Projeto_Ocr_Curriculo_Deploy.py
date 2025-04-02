@@ -126,7 +126,17 @@ with st.sidebar:
         #MainMenu {visibility: hidden;}
         header {visibility: hidden;}
         footer {visibility: hidden;}
-        button[data-testid="manage-app-button"] {display: none !important;}
+        
+                /* Oculta o botão "Manage app" */
+        button[data-testid="manage-app-button"] {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        /* Outra tentativa para esconder o botão */
+        div:has(> button[data-testid="manage-app-button"]) {
+            display: none !important;
+        }
     </style>
     """, unsafe_allow_html=True)
 
