@@ -105,13 +105,6 @@ def generate(text):
     else:
         return "Resposta não encontrada."
 
-# Configuração da página
-st.set_page_config(
-    page_title="Multiedro",
-    page_icon="vertex-ai.png",
-    layout="wide",
-)
-
 # --- Sidebar ---
 with st.sidebar:
     # Exibir imagem
