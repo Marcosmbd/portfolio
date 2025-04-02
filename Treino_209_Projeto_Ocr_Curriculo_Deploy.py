@@ -126,7 +126,7 @@ with st.sidebar:
         #MainMenu {visibility: hidden;}
         header {visibility: hidden;}
         footer {visibility: hidden;}
-        [data-testid="stAppViewContainer"] > div:nth-child(1) {display: none;}
+        [data-testid="stDecoration"] {display: none;}
     </style>
     """, unsafe_allow_html=True)
 
