@@ -126,7 +126,8 @@ with st.sidebar:
         #MainMenu {visibility: hidden;}
         header {visibility: hidden;}
         footer {visibility: hidden;}
-        [data-testid="stDecoration"] {display: none;}
+        [data-testid="stDecoration"] {display: none;} /* Tenta ocultar "Manage app" */
+        [data-testid="stStatusWidget"] {display: none;} /* Tenta ocultar "Manage app" */
     </style>
     """, unsafe_allow_html=True)
 
