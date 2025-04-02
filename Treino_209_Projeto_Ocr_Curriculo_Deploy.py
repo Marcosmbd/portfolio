@@ -120,6 +120,14 @@ with st.sidebar:
     st.markdown("<h4 style='text-align: center; font-size: 24px;'><b>Marcos Bernardino</b></h4>", unsafe_allow_html=True)
     cv_url = st.secrets["google_drive"]["cv_url"]
     st.markdown(f"<p style='text-align: center;'><a href='{cv_url}' download>Download CV</a></p>", unsafe_allow_html=True)
+    
+    st.markdown("""
+    <style>
+        #MainMenu {visibility: hidden;}
+        header {visibility: hidden;}
+        footer {visibility: hidden;}
+    </style>
+    """, unsafe_allow_html=True)
 
 # --- Inicializar histórico do chat ---
 if "messages" not in st.session_state:
