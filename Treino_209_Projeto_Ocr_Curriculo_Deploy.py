@@ -81,12 +81,12 @@ def generate(text):
         max_output_tokens=8192,
         response_modalities=["TEXT"],
         tools=tools,
-        system_instruction=[types.Part.from_text(text=si_text1)],  # 🔹 Instrução fixa aplicada aqui
+        system_instruction=[types.Part.from_text(text=si_text1)],  # Instrução fixa aplicada aqui
     )
 
     response = client.models.generate_content(
         model=model,
-        contents=contents,  # 🔹 Agora o Gemini recebe TODO o histórico
+        contents=contents,  # Gemini recebe TODO o histórico
         config=generate_content_config,
     )
 
